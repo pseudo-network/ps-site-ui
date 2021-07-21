@@ -1,33 +1,42 @@
-service := pw-next-base
-version := 0.0.0
-docker_org := pineappleworkshop
-cluster := pw-dev
-docker-image := gcr.io/${docker_org}/${service}:${version}
+service := ps-site-ui
+version := 0.0.1
+gcloud_proj_id := sylvan-bonbon-317613
+cluster := ps-dev
+gcr-image := gcr.io/${gcloud_proj_id}/${service}:${version}
 root := $(abspath $(shell pwd))
 port := 80
+
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
-bootstrap:
+
+install-dependencies:
 	pip install bumpversion
-	yarn install
-init:
-	yarn install
+	npm install
+
+format:
+	npm run format
+
 dev:
-	yarn dev
+	npm start
+
 docker-build:
-	docker build -t $(docker-image) .
+	docker build -t $(gcr-image) .
+
 docker-dev:
 	make docker-build
 	make docker-run
+
 docker-push:
-	docker push $(docker-image)
+	docker push $(gcr-image)
+
 docker-run:
-	@docker run -itp $(port):$(port)  $(docker-image)
+	@docker run -itp $(port):$(port)  $(gcr-image)
+
 bumpversion-patch:
 	bumpversion patch --allow-dirty
+
 bumpversion-minor:
 	bumpversion minor --allow-dirty
+
 bumpversion-major:
 	bumpversion major --allow-dirty
-test-integration:
-	yarn run e2e
