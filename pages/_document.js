@@ -1,18 +1,31 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheets } from '@material-ui/core/styles'
-import theme from '../themes/theme'
+import { ServerStyleSheets } from '@material-ui/styles'
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps }
+  }
+
   render() {
     return (
-      <Html lang="en">
+      <Html>
         <Head>
-          {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
+            rel="preload"
+            href="/fonts/Now-Bold/Now-Bold.otf"
+            as="font"
+            crossOrigin=""
+          />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,900;1,200;1,300;1,500&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+            rel="stylesheet"
           />
         </Head>
         <body>
@@ -69,3 +82,5 @@ MyDocument.getInitialProps = async (ctx) => {
     ],
   }
 }
+
+export default MyDocument

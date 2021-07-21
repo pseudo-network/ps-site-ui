@@ -23,6 +23,7 @@ import PropTypes from "prop-types"
 import { useHistory } from "react-router-dom"
 import { useCryptos } from "../../../contexts/cryptosContext"
 import { useWallet } from "../../../contexts/walletContext"
+import Image from 'next/image'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,14 +35,22 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: ".60em",
     paddingBottom: ".60em",
     borderBottom: ".01px solid #545761",
+    fontFamily: theme.typography.regular,
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    fontFamily: theme.typography.regular,
+
+  },
+  titleContainer: {
+    flexGrow: 1,
+    fontFamily: theme.typography.regular,
+    alignItems: "center",
+    alignContent: "center",
+    display: "flex"
   },
   title: {
-    flexGrow: 1,
-    color: "#ACB0BB",
-    fontWeight: 600,
+    marginLeft:10
   },
   link: {
     paddingLeft: 10,
@@ -133,16 +142,14 @@ export default function TopBar(props) {
     <>
       <AppBar elevation={0} position="fixed" className={classes.appBar}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Pseudonetwork
-          </Typography>
+
+          <Box className={classes.titleContainer}>
+            <Image src={"/imgs/ps-logo.png"} width={40} height={40} />
+            <Typography variant="h6" className={classes.title}>
+              PseudoNetwork
+            </Typography>
+          </Box>
+          
           <div className={classes.search}>
           </div>
           <div className={classes.balance}>

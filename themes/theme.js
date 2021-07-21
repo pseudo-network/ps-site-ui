@@ -26,6 +26,11 @@ const LightTheme = createMuiTheme({
       default: "#25272D",
       paper: "#0D111B",
     },
+    typography: {
+      bold: 'Now-Bold, Arial',
+      light: 'Now-Bold, Arial',
+      regular: 'Poppins, Arial',
+    },
     // divider: {
     //   // main:
     // },

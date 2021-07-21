@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     borderRadius: ".5rem",
+    fontFamily: theme.typography.regular,
   },
   listItemParent: {
     paddingLeft: "1.5em",
@@ -104,7 +105,7 @@ export default function NavFrame(props) {
         {navItem.isDisabled ? ( // if the nav list item is disabled:
           <ListItem id={key} className={classes.listItem} disabled={true}>
             <ListItemIcon>{navItem.icon}</ListItemIcon>
-            <ListItemText primary={navItem.title + " (Coming Soon)"} />
+            <ListItemText className={classes.listItemText} primary={navItem.title + " (Coming Soon)"} />
           </ListItem>
         ) : (
           <Link href={navItem.path}>
@@ -122,7 +123,6 @@ export default function NavFrame(props) {
       </>
     )
   }
-
 
   const classes = useStyles()
 

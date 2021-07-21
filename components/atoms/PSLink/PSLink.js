@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     color: "white",
     cursor: "pointer",
+    fontFamily: theme.typography.regular,
   },
 }))
 

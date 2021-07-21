@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(131, 106, 255, 0.25)",
     border: "1px solid #836AFF",
     padding: ".66em",
+    fontFamily: theme.typography.regular,
   },
   text: {
     whiteSpace: "nowrap",
@@ -18,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#A694FE",
     fontWeight: 600,
     textTransform: "none",
+    fontFamily: theme.typography.regular,
   },
 }))
 
