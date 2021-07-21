@@ -1,0 +1,44 @@
+{
+  "name": "pw-next-base",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "axios": "^0.21.1",
+    "crypto": "^1.0.1",
+    "crypto-js": "^3.1.9-1",
+    "http": "^0.0.1-security",
+    "mathjs": "^9.4.3",
+    "net": "^1.0.2",
+    "next": "^10.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-no-ssr": "^1.1.0",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "stream": "^0.0.2",
+    "swr": "^0.5.6",
+    "tls": "^0.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "babel-loader": "^8.2.2",
+    "prettier": "2.3.0"
+  },
+  "browser": {
+    "crypto": false
+  }
+}
