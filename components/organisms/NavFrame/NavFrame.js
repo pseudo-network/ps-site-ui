@@ -14,7 +14,7 @@ import Toolbar from "@material-ui/core/Toolbar"
 import TopBar from "../../molecules/TopBar/TopBar"
 import SocialMediaRow from "../../molecules/SocialMediaRow/SocialMediaRow"
 import Watermark from "../../molecules/Watermark/Watermark"
-import { AccountBalance, InsertChart, SwapHoriz, Home, Videocam, Map, BarChart, ReceiptOutlined } from "@material-ui/icons"
+import { AccountBalance, InsertChart, SwapHoriz, Home, Videocam, Map, BarChart, ReceiptOutlined, AccountTree } from "@material-ui/icons"
 import { alpha, makeStyles } from "@material-ui/core/styles"
 import Link from 'next/link'
 import { useHistory } from "react-router-dom"
@@ -51,16 +51,13 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    paddingTop: theme.spacing(1),
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
-  },
-  toolbar: {
-    minHeight: 80,
   },
   listHeader: {
     paddingLeft: "1.5em",
@@ -91,7 +88,7 @@ export default function NavFrame(props) {
 
   const pages = [
     ListItemObject("Home", <Home />, "/"),
-    ListItemObject("Tutorials", <Videocam />, "/tutorials"),
+    ListItemObject("Videos", <Videocam />, "/videos"),
   ]
 
   const tools = [
@@ -99,8 +96,9 @@ export default function NavFrame(props) {
   ]
 
   const others = [
-    ListItemObject("Whitepaper", <ReceiptOutlined/>, "/whitepaper"),
-    ListItemObject("Roadmap", <Map />, "/roadmap"),
+    ListItemObject("Whitepaper", <ReceiptOutlined/>, "https://pseudocoin.net/Real_PseudoCoin_Whitepaper.pptx.pdf", false, true),
+    ListItemObject("Linktree", <AccountTree/>, "https://linktr.ee/PseudoCoin", false, true),
+    ListItemObject("Roadmap", <Map />, "/roadmap", true),
   ]
 
   const NavListItem = ({ navItem, key }) => {
@@ -116,7 +114,7 @@ export default function NavFrame(props) {
         {navItem.isDisabled ? ( // if the nav list item is disabled:
           <ListItem id={key} className={classes.listItem} disabled={true}>
             <ListItemIcon>{navItem.icon}</ListItemIcon>
-            <ListItemText className={classes.listItemText} primary={navItem.title + " (Coming Soon)"} />
+            <ListItemText className={classes.listItemText} primary={navItem.title + " (Soon)"} />
           </ListItem>
         ) : (
           <Link href={navItem.path}>
@@ -179,7 +177,7 @@ export default function NavFrame(props) {
             })}
           </List>
           <List>
-            <h4 className={classes.listHeader}>Other</h4>     
+            <h4 className={classes.listHeader}>Links</h4>     
             {others.map((item, key) => {
               // console.log("NavListItem" + key);
               return (

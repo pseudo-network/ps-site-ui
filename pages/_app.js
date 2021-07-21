@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import LightTheme from '../themes/theme'
 import React from 'react'
-import { Container } from '@material-ui/core'
+import { Container, Box } from '@material-ui/core'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { ProvideCryptos } from "../contexts/cryptosContext"
 import { ProvideWallet } from "../contexts/walletContext"
@@ -15,9 +15,9 @@ function MyApp(props) {
       <ProvideCryptos>
         <ProvideCrypto>
           <ProvideWallet>
-            <Container style={{ 'margin-top': '10px' }}>
+            <Box style={{'margin':'33px' }}>
               <Component {...pageProps} />
-            </Container>
+            </Box>
           </ProvideWallet>
         </ProvideCrypto>
       </ProvideCryptos>
