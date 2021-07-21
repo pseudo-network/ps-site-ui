@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: ps-app-ui
-  name: ps-app-ui
+    app: ps-site-ui
+  name: ps-site-ui
 spec:
   type: LoadBalancer
   ports:
@@ -11,4 +11,4 @@ spec:
       targetPort: 80
       protocol: TCP
   selector:
-    app: ps-app-ui
+    app: ps-site-ui

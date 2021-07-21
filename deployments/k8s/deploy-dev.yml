@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ps-app-ui
+  name: ps-site-ui
 spec:
   selector:
     matchLabels:
-      app: ps-app-ui
+      app: ps-site-ui
   replicas: 1
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: ps-app-ui
+        app: ps-site-ui
     spec:
       containers:
-        - name: ps-app-ui
-          image: gcr.io/sylvan-bonbon-317613/ps-app-ui:0.0.0
+        - name: ps-site-ui
+          image: gcr.io/sylvan-bonbon-317613/ps-site-ui:0.0.0
           env:
             - name: ENV
               value: "dev"

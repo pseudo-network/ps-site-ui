@@ -52,7 +52,7 @@ workflows:
   docker-build-push-deploy-dev:
     jobs:
       - gcp-gcr/build-and-push-image:
-          image: ps-app-ui
+          image: ps-site-ui
           tag: 0.0.0
           registry-url: gcr.io
           extra_build_args: "--build-arg=env=dev"
@@ -62,9 +62,9 @@ workflows:
                 - dev
       - deploy:
           cluster: ps-dev
-          container: ps-app-ui
-          deployment: ps-app-ui
-          image: gcr.io/sylvan-bonbon-317613/ps-app-ui
+          container: ps-site-ui
+          deployment: ps-site-ui
+          image: gcr.io/sylvan-bonbon-317613/ps-site-ui
           tag: 0.0.0
           namespace: default
           filters:
@@ -77,7 +77,7 @@ workflows:
   docker-build-push-deploy-prod:
     jobs:
       - gcp-gcr/build-and-push-image:
-          image: ps-app-ui
+          image: ps-site-ui
           tag: 0.0.0
           registry-url: gcr.io
           extra_build_args: "--build-arg=env=prod"
@@ -87,9 +87,9 @@ workflows:
                 - prod
       - deploy:
           cluster: ps-prod
-          container: ps-app-ui
-          deployment: ps-app-ui
-          image: gcr.io/sylvan-bonbon-317613/ps-app-ui
+          container: ps-site-ui
+          deployment: ps-site-ui
+          image: gcr.io/sylvan-bonbon-317613/ps-site-ui
           tag: 0.0.0
           namespace: default
           filters:
