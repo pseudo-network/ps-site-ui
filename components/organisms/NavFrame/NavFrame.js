@@ -17,15 +17,19 @@ import Watermark from "../../molecules/Watermark/Watermark"
 import { AccountBalance, InsertChart, SwapHoriz, Home, Videocam, Map, BarChart, ReceiptOutlined } from "@material-ui/icons"
 import { alpha, makeStyles } from "@material-ui/core/styles"
 import Link from 'next/link'
+import { useHistory } from "react-router-dom"
 
 const drawerWidth = 300
 
-function ListItemObject(title, icon, path, isDisabled = false) {
+function ListItemObject(title, icon, path, isDisabled = false, newTab = false) {
+  const target = newTab ? "_blank" : "_"
+  
   return {
     title: title,
     icon: icon,
     path: path,
     isDisabled: isDisabled,
+    target: target
   }
 }
 
@@ -83,13 +87,15 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function NavFrame(props) {
+  const history = useHistory()
+
   const pages = [
     ListItemObject("Home", <Home />, "/"),
     ListItemObject("Tutorials", <Videocam />, "/tutorials"),
   ]
 
   const tools = [
-    ListItemObject("Charts", <BarChart />, "http://charts.pseudonetwork.net/0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3"),
+    ListItemObject("Charts", <BarChart />, "http://charts.pseudonetwork.net/0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3", false, true),
   ]
 
   const others = [
@@ -100,6 +106,11 @@ export default function NavFrame(props) {
   const NavListItem = ({ navItem, key }) => {
     const classes = useStyles()
     // const isSelected = navItem.path == props.location.pathname
+
+    const navigate = () =>{
+      history.push(navItem.path)
+    }
+
     return (
       <>
         {navItem.isDisabled ? ( // if the nav list item is disabled:
