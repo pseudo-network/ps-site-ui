@@ -23,7 +23,7 @@ import PropTypes from "prop-types"
 import { useHistory } from "react-router-dom"
 import { useCryptos } from "../../../contexts/cryptosContext"
 import { useWallet } from "../../../contexts/walletContext"
-import Image from 'next/image'
+import Image from "next/image"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,17 +40,16 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     fontFamily: theme.typography.regular,
-
   },
   titleContainer: {
     flexGrow: 1,
     fontFamily: theme.typography.regular,
     alignItems: "center",
     alignContent: "center",
-    display: "flex"
+    display: "flex",
   },
   title: {
-    marginLeft:10
+    marginLeft: 13,
   },
   link: {
     paddingLeft: 10,
@@ -142,16 +141,14 @@ export default function TopBar(props) {
     <>
       <AppBar elevation={0} position="fixed" className={classes.appBar}>
         <Toolbar>
-
           <Box className={classes.titleContainer}>
             <Image src={"/imgs/ps-logo.png"} width={40} height={40} />
             <Typography variant="h6" className={classes.title}>
               PseudoNetwork
             </Typography>
           </Box>
-          
-          <div className={classes.search}>
-          </div>
+
+          <div className={classes.search}></div>
           <div className={classes.balance}>
             <PSLabel text={walletContext.balance} />
           </div>

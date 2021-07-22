@@ -14,24 +14,23 @@ import Toolbar from "@material-ui/core/Toolbar"
 import TopBar from "../../molecules/TopBar/TopBar"
 import SocialMediaRow from "../../molecules/SocialMediaRow/SocialMediaRow"
 import Watermark from "../../molecules/Watermark/Watermark"
-import { AccountBalance, InsertChart, SwapHoriz, Home, Videocam, Map, BarChart, ReceiptOutlined, AccountTree } from "@material-ui/icons"
+import {
+  AccountBalance,
+  InsertChart,
+  SwapHoriz,
+  Assessment,
+  Home,
+  Videocam,
+  Map,
+  BarChart,
+  ReceiptOutlined,
+  AccountTree,
+} from "@material-ui/icons"
 import { alpha, makeStyles } from "@material-ui/core/styles"
-import Link from 'next/link'
-import { useHistory } from "react-router-dom"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 const drawerWidth = 300
-
-function ListItemObject(title, icon, path, isDisabled = false, newTab = false) {
-  const target = newTab ? "_blank" : "_"
-  
-  return {
-    title: title,
-    icon: icon,
-    path: path,
-    isDisabled: isDisabled,
-    target: target
-  }
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,8 +82,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+function ListItemObject(title, icon, path, isDisabled = false, newTab = false) {
+  return {
+    title: title,
+    icon: icon,
+    path: path,
+    isDisabled: isDisabled,
+    newTab: newTab,
+  }
+}
+
 export default function NavFrame(props) {
-  const history = useHistory()
+  const router = useRouter()
 
   const pages = [
     ListItemObject("Home", <Home />, "/"),
@@ -92,21 +101,39 @@ export default function NavFrame(props) {
   ]
 
   const tools = [
-    ListItemObject("Charts", <BarChart />, "http://charts.pseudonetwork.net/0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3", false, true),
+    ListItemObject(
+      "Charts",
+      <Assessment />,
+      "http://charts.pseudonetwork.net/0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3",
+      false,
+      true
+    ),
   ]
 
-  const others = [
-    ListItemObject("Whitepaper", <ReceiptOutlined/>, "https://pseudocoin.net/Real_PseudoCoin_Whitepaper.pptx.pdf", false, true),
-    ListItemObject("Linktree", <AccountTree/>, "https://linktr.ee/PseudoCoin", false, true),
+  const links = [
+    ListItemObject(
+      "Whitepaper",
+      <ReceiptOutlined />,
+      "https://pseudocoin.net/Real_PseudoCoin_Whitepaper.pptx.pdf",
+      false,
+      true
+    ),
+    ListItemObject(
+      "Linktree",
+      <AccountTree />,
+      "https://linktr.ee/PseudoCoin",
+      false,
+      true
+    ),
     ListItemObject("Roadmap", <Map />, "/roadmap", true),
   ]
 
   const NavListItem = ({ navItem, key }) => {
     const classes = useStyles()
-    // const isSelected = navItem.path == props.location.pathname
+    const isSelected = navItem.path == router.route
 
-    const navigate = () =>{
-      history.push(navItem.path)
+    const navigate = (path, newTab) => {
+      newTab ? window.open(path, "_blank") : router.push(path)
     }
 
     return (
@@ -114,20 +141,24 @@ export default function NavFrame(props) {
         {navItem.isDisabled ? ( // if the nav list item is disabled:
           <ListItem id={key} className={classes.listItem} disabled={true}>
             <ListItemIcon>{navItem.icon}</ListItemIcon>
-            <ListItemText className={classes.listItemText} primary={navItem.title + " (Soon)"} />
+            <ListItemText
+              className={classes.listItemText}
+              primary={navItem.title + " (Soon)"}
+            />
           </ListItem>
         ) : (
-          <Link href={navItem.path}>
-            <ListItem
-              button
-              id={key}
-              // selected={isSelected}
-              className={classes.listItem}
-            >
-              <ListItemIcon>{navItem.icon}</ListItemIcon>
-              <ListItemText primary={navItem.title} />
-            </ListItem>
-          </Link>
+          <ListItem
+            button
+            selected={isSelected}
+            id={key}
+            className={classes.listItem}
+            onClick={() => {
+              navigate(navItem.path, navItem.newTab)
+            }}
+          >
+            <ListItemIcon>{navItem.icon}</ListItemIcon>
+            <ListItemText primary={navItem.title} />
+          </ListItem>
         )}
       </>
     )
@@ -149,7 +180,8 @@ export default function NavFrame(props) {
         <Toolbar className={classes.toolbar} />
         <div className={classes.drawerContainer}>
           <List>
-            <h4 className={classes.listHeader}>Pages</h4>     
+            <br />
+            <h4 className={classes.listHeader}>Pages</h4>
             {pages.map((item, key) => {
               // console.log("NavListItem" + key);
               return (
@@ -163,7 +195,7 @@ export default function NavFrame(props) {
             })}
           </List>
           <List>
-            <h4 className={classes.listHeader}>Tools</h4>     
+            <h4 className={classes.listHeader}>Tools</h4>
             {tools.map((item, key) => {
               // console.log("NavListItem" + key);
               return (
@@ -177,8 +209,8 @@ export default function NavFrame(props) {
             })}
           </List>
           <List>
-            <h4 className={classes.listHeader}>Links</h4>     
-            {others.map((item, key) => {
+            <h4 className={classes.listHeader}>Links</h4>
+            {links.map((item, key) => {
               // console.log("NavListItem" + key);
               return (
                 <div key={key} className={classes.listItemParent}>

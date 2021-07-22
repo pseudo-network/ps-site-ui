@@ -1,5 +1,5 @@
-import { createMuiTheme } from '@material-ui/core/styles'
-import '../styles/Home.module.css'
+import { createMuiTheme } from "@material-ui/core/styles"
+import "../styles/Home.module.css"
 
 const LightTheme = createMuiTheme({
   palette: {
@@ -27,9 +27,9 @@ const LightTheme = createMuiTheme({
       paper: "#0D111B",
     },
     typography: {
-      bold: 'Now-Bold, Arial',
-      light: 'Now-Bold, Arial',
-      regular: 'Poppins, Arial',
+      bold: "Now-Bold, Arial",
+      light: "Now-Bold, Arial",
+      regular: "Poppins, Arial",
     },
     // divider: {
     //   // main:
