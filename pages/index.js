@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <NavFrame page={"Home"}>
       <Grid container spacing={3}>
-        <Grid container item xs={9}>
+        <Grid container item xs={12}>
           <PSCard
             title={"Welcome to the PseudoCoin Network"}
             content={
@@ -30,23 +30,11 @@ export default function Home() {
             }
           />
         </Grid>
-
-        <Grid container item xs={3}>
-          <PSCard
-            title={"Premium"}
-            avatar={<AttachMoney />}
-            content={
-              <>
-                <Typography paragraph>Premium features coming soon!</Typography>
-              </>
-            }
-          />{" "}
-        </Grid>
       </Grid>
 
       <br />
       <Grid container spacing={3}>
-        <Grid container item xs={6}>
+        <Grid container item xs={4}>
           <PSCard
             title={"Charts"}
             avatar={<Assessment />}
@@ -68,7 +56,7 @@ export default function Home() {
           />
         </Grid>
 
-        <Grid container item xs={6}>
+        <Grid container item xs={4}>
           <PSCard
             title={"Videos"}
             avatar={<Videocam />}
@@ -85,6 +73,18 @@ export default function Home() {
                     url={CHART_BASE_URL}
                   />
                 </Typography>
+              </>
+            }
+          />
+        </Grid>
+
+        <Grid container item xs={4}>
+          <PSCard
+            title={"Premium"}
+            avatar={<AttachMoney />}
+            content={
+              <>
+                <Typography paragraph>Premium features coming soon!</Typography>
               </>
             }
           />
