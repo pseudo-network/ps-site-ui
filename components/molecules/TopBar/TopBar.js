@@ -144,7 +144,7 @@ export default function TopBar(props) {
           <Box className={classes.titleContainer}>
             <Image src={"/imgs/ps-logo.png"} width={40} height={40} />
             <Typography variant="h6" className={classes.title}>
-              PseudoNetwork
+              PseudoCoin
             </Typography>
           </Box>
 

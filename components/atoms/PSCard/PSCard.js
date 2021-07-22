@@ -15,14 +15,17 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 import ShareIcon from "@material-ui/icons/Share"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
+import { Videocam } from "@material-ui/icons"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // maxWidth: ,
+    width: "100%",
+    height: "100%",
+    minHeight: 233,
   },
   media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+    width: "100%",
+    height: "100%",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -35,11 +38,14 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(180deg)",
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: "#836AFF",
+  },
+  title: {
+    color: "#fff",
   },
 }))
 
-export default function PSVideoCard(props) {
+export default function PSCard(props) {
   const classes = useStyles()
   const [expanded, setExpanded] = React.useState(false)
 
@@ -49,35 +55,22 @@ export default function PSVideoCard(props) {
 
   return (
     <Card className={classes.root}>
-      <CardContent>
-        <iframe width="100%" src={props.url}></iframe>
-        <Typography variant="body2" component="p">
-          {props.title}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          {/* <ExpandMoreIcon /> */}
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>{props.description}</Typography>
-        </CardContent>
-      </Collapse>
+      {props.title && (
+        <CardHeader
+          avatar={
+            props.avatar && (
+              <Avatar className={classes.avatar}>{props.avatar}</Avatar>
+            )
+          }
+          className={classes.title}
+          title={props.title}
+          subheader={props.subheader}
+        />
+      )}
+      {props.imgURL && (
+        <CardMedia className={classes.media} image={props.imgURL} />
+      )}
+      {props.content && <CardContent>{props.content}</CardContent>}
     </Card>
   )
 }

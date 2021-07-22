@@ -1,4 +1,5 @@
 export const API_BASE_URL = "http://api.pseudonetwork.net:3444"
+export const CHART_BASE_URL = "http://charts.pseudonetwork.net"
 
 // bitquery
 export const BITQUERY_BASE_URL = "https://graphql.bitquery.io"

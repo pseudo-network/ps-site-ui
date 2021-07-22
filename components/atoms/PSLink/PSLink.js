@@ -1,13 +1,12 @@
-// React Components and Hooks
 import React from "react"
-
+import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    color: "white",
     cursor: "pointer",
     fontFamily: theme.typography.regular,
+    color: "#836AFF",
   },
 }))
 
@@ -21,11 +20,16 @@ const PSLink = (props) => {
     <>
       <a
         className={classes.root}
-        color="inherit"
+        color="active"
         href={props.url}
         onClick={props.onClick}
+        target={props.newTab ? "_blank" : ""}
+        rel="noreferrer"
       >
-        {props.text}
+        <p style={{ display: "flex", "align-items": "center" }}>
+          {props.text}
+          {props.withIcon ? <ChevronRightIcon /> : <></>}
+        </p>
       </a>
     </>
   )
