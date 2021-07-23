@@ -4,9 +4,7 @@ metadata:
   labels:
     app: ps-site-ui
   name: ps-site-ui
-  namespace: tf
 spec:
-  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 80
