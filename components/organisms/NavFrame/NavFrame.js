@@ -114,7 +114,7 @@ export default function NavFrame(props) {
     ListItemObject(
       "Whitepaper",
       <ReceiptOutlined />,
-      "https://pseudocoin.net/Real_PseudoCoin_Whitepaper.pptx.pdf",
+      "https://pseudocoin.app/Real_PseudoCoin_Whitepaper.pptx.pdf",
       false,
       true
     ),
