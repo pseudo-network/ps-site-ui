@@ -5,7 +5,6 @@ metadata:
     app: ps-site-ui
   name: ps-site-ui
 spec:
-  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 80
