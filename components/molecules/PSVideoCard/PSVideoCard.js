@@ -50,7 +50,7 @@ export default function PSVideoCard(props) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <iframe width="100%" src={props.url}></iframe>
+        <iframe allowFullScreen="true" width="100%" src={props.url}></iframe>
         <Typography variant="body2" component="p">
           {props.title}
         </Typography>

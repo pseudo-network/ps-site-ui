@@ -1,7 +1,9 @@
 import NavFrame from "../components/organisms/NavFrame/NavFrame"
-import PSVideoCard from "../components/atoms/PSVideoCard/PSVideoCard"
+import PSVideoCard from "../components/molecules/PSVideoCard/PSVideoCard"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
+import Head from "next/head"
+import React from "react"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,52 +17,58 @@ export default function Home() {
   const classes = useStyles()
 
   return (
-    <NavFrame page={"Dashboard"}>
-      <Typography>Pseudocoin</Typography>
+    <>
+      <Head>
+        <title>Videos</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <NavFrame page={"Dashboard"}>
+        <Typography>Pseudocoin</Typography>
 
-      <br />
+        <br />
 
-      <Grid container spacing={2}>
-        <Grid container item xs={12} sm={6} md={3} spacing={1}>
-          <PSVideoCard
-            title={"What is PseudoCoin?"}
-            url={"https://www.youtube.com/embed/8gCD_ltwCsw"}
-          />
+        <Grid container spacing={2}>
+          <Grid container item xs={12} sm={6} md={3} spacing={1}>
+            <PSVideoCard
+              title={"What is PseudoCoin?"}
+              url={"https://www.youtube.com/embed/8gCD_ltwCsw"}
+            />
+          </Grid>
         </Grid>
-      </Grid>
 
-      <br />
+        <br />
 
-      <Typography>Tutorials</Typography>
+        <Typography>Tutorials</Typography>
 
-      <br />
+        <br />
 
-      <Grid container spacing={2}>
-        <Grid container item xs={12} sm={6} md={3} spacing={1}>
-          <PSVideoCard
-            title={"Trust Wallet: Introduction To Trust Wallet"}
-            url={"https://www.youtube.com/embed/aqtOIKNlLIc"}
-          />
+        <Grid container spacing={2}>
+          <Grid container item xs={12} sm={6} md={3} spacing={1}>
+            <PSVideoCard
+              title={"Trust Wallet: Introduction To Trust Wallet"}
+              url={"https://www.youtube.com/embed/aqtOIKNlLIc"}
+            />
+          </Grid>
+          <Grid container item xs={12} sm={6} md={3} spacing={1}>
+            <PSVideoCard
+              title={"Trust Wallet: How to Install, Create/Import Wallet"}
+              url={"https://www.youtube.com/embed/aCe9N8Amkvs"}
+            />
+          </Grid>
+          <Grid container item xs={12} sm={6} md={3} spacing={1}>
+            <PSVideoCard
+              title={"How to Set up MetaMask Wallet"}
+              url={"https://www.youtube.com/embed/hAqpb7aNSt0"}
+            />
+          </Grid>
+          <Grid container item xs={12} sm={6} md={3} spacing={1}>
+            <PSVideoCard
+              title={"Alt Coin Trading: How to Spot a Scam Token"}
+              url={"https://www.youtube.com/embed/vNOfWhTPG_Q"}
+            />
+          </Grid>
         </Grid>
-        <Grid container item xs={12} sm={6} md={3} spacing={1}>
-          <PSVideoCard
-            title={"Trust Wallet: How to Install, Create/Import Wallet"}
-            url={"https://www.youtube.com/embed/aCe9N8Amkvs"}
-          />
-        </Grid>
-        <Grid container item xs={12} sm={6} md={3} spacing={1}>
-          <PSVideoCard
-            title={"How to Set up MetaMask Wallet"}
-            url={"https://www.youtube.com/embed/hAqpb7aNSt0"}
-          />
-        </Grid>
-        <Grid container item xs={12} sm={6} md={3} spacing={1}>
-          <PSVideoCard
-            title={"Alt Coin Trading: How to Spot a Scam Token"}
-            url={"https://www.youtube.com/embed/vNOfWhTPG_Q"}
-          />
-        </Grid>
-      </Grid>
-    </NavFrame>
+      </NavFrame>
+    </>
   )
 }

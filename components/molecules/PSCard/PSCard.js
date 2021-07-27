@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(180deg)",
   },
   avatar: {
-    backgroundColor: "#836AFF",
+    color: "#836AFF",
   },
   title: {
     color: "#fff",
@@ -58,9 +58,8 @@ export default function PSCard(props) {
       {props.title && (
         <CardHeader
           avatar={
-            props.avatar && (
-              <Avatar className={classes.avatar}>{props.avatar}</Avatar>
-            )
+            props.avatar &&
+            props.avatar && <div className={classes.avatar}>{props.avatar}</div>
           }
           className={classes.title}
           title={props.title}
