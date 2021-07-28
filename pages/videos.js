@@ -23,7 +23,7 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <NavFrame page={"Dashboard"}>
-        <Typography>Pseudocoin</Typography>
+        <Typography>PseudoCoin</Typography>
 
         <br />
 

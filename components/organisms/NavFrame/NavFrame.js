@@ -29,6 +29,7 @@ import {
 import { alpha, makeStyles } from "@material-ui/core/styles"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import ThemeToggle from "../../molecules/ThemeToggle/ThemeToggle"
 
 const drawerWidth = 300
 
@@ -224,6 +225,8 @@ export default function NavFrame(props) {
           </List>
           <div className={classes.socialMediaRowParent}>
             {" "}
+            <ThemeToggle />
+            <br />
             <SocialMediaRow />
             <br />
             <Watermark />

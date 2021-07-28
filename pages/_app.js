@@ -1,27 +1,40 @@
 import "../styles/globals.css"
-import LightTheme from "../themes/theme"
+import LightTheme from "../themes/light-theme"
+import DarkTheme from "../themes/dark-theme"
 import React from "react"
-import { Container, Box } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 import { ThemeProvider } from "@material-ui/core/styles"
 import { ProvideCryptos } from "../contexts/cryptosContext"
 import { ProvideWallet } from "../contexts/walletContext"
 import { ProvideCrypto } from "../contexts/cryptoContext"
+import {
+  AppThemeContext,
+  ProvideAppTheme,
+  useAppTheme,
+} from "../contexts/appThemeContext"
 
 function MyApp(props) {
   const { Component, pageProps } = props
+  const appThemeContext = useAppTheme()
 
   return (
-    <ThemeProvider theme={LightTheme}>
-      <ProvideCryptos>
-        <ProvideCrypto>
-          <ProvideWallet>
-            <Box style={{ margin: "33px" }}>
-              <Component {...pageProps} />
-            </Box>
-          </ProvideWallet>
-        </ProvideCrypto>
-      </ProvideCryptos>
-    </ThemeProvider>
+    <ProvideAppTheme>
+      <AppThemeContext.Consumer>
+        {(theme) => (
+          <ThemeProvider theme={theme.darkMode ? DarkTheme : LightTheme}>
+            <ProvideCryptos>
+              <ProvideCrypto>
+                <ProvideWallet>
+                  <Box style={{ margin: "33px" }}>
+                    <Component {...pageProps} />
+                  </Box>
+                </ProvideWallet>
+              </ProvideCrypto>
+            </ProvideCryptos>
+          </ThemeProvider>
+        )}
+      </AppThemeContext.Consumer>
+    </ProvideAppTheme>
   )
 }
 

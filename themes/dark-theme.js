@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 import "../styles/Home.module.css"
 
-const LightTheme = createMuiTheme({
+const DarkTheme = createMuiTheme({
   palette: {
     type: "dark",
     primary: {
@@ -31,27 +31,7 @@ const LightTheme = createMuiTheme({
       light: "Now-Bold, Arial",
       regular: "Poppins, Arial",
     },
-    // divider: {
-    //   // main:
-    // },
   },
-
-  // light
-  // palette: {
-  //   type: "light",
-  //   primary: {
-  //     main: "#fff",
-  //   },
-  //   secondary: {
-  //     main: "#070B15",
-  //   },
-  //   text: {
-  //   },
-  //   action: {
-  //     active: "#836AFF",
-  //     hover: "#14171F",
-  //   },
-  // },
 })
 
-export default LightTheme
+export default DarkTheme

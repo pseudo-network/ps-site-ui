@@ -10,17 +10,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     display: "flex",
-    justifyContent: "center",
+    // justifyContent: "center",
     // backgroundColor: theme.pallete.secondary,
   },
 }))
 
-const AddressDetail = (props) => {
+const SocialMediaRow = (props) => {
   const classes = useStyles()
 
-  /*
-    ON RENDER FUNCTION/ MOUNT COMPENENT
-  */
   return (
     <Box className={classes.root}>
       <IconButton
@@ -65,4 +62,4 @@ const AddressDetail = (props) => {
   )
 }
 
-export default AddressDetail
+export default SocialMediaRow
