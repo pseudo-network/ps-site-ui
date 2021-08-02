@@ -15,7 +15,6 @@ import {
 
 function MyApp(props) {
   const { Component, pageProps } = props
-  const appThemeContext = useAppTheme()
 
   return (
     <ProvideAppTheme>
