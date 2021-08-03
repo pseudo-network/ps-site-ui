@@ -21,7 +21,7 @@ import PropTypes from "prop-types"
 import { useWallet } from "../../../contexts/walletContext"
 import Image from "next/image"
 import Link from "next/link"
-import { BASE_URl } from "../../../core/environments"
+import { BASE_URl, LANDING_URL } from "../../../core/environments"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -142,7 +142,7 @@ export default function TopBar(props) {
       <AppBar elevation={0} position="fixed" className={classes.appBar}>
         <Toolbar>
           <Box className={classes.titleContainer}>
-            <Link href={BASE_URl}>
+            <Link href={LANDING_URL}>
               <Image
                 className={classes.logo}
                 src={"/imgs/ps-logo.png"}

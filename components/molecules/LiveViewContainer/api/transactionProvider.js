@@ -1,4 +1,4 @@
-const api_root = "https://api.pseudocoin.app/v1"
+const api_root = "https://api.pseudocoin.io/v1"
 const transaction = {}
 
 export default {

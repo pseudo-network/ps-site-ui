@@ -105,7 +105,7 @@ export default function NavFrame(props) {
     ListItemObject(
       "Charts",
       <Assessment />,
-      "https://charts.pseudocoin.app/0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3",
+      "https://charts.pseudocoin.io/0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3",
       false,
       true
     ),
@@ -115,7 +115,7 @@ export default function NavFrame(props) {
     ListItemObject(
       "Whitepaper",
       <ReceiptOutlined />,
-      "https://pseudocoin.app/Real_PseudoCoin_Whitepaper.pptx.pdf",
+      "https://pseudocoin.io/Real_PseudoCoin_Whitepaper.pptx.pdf",
       false,
       true
     ),
@@ -230,6 +230,7 @@ export default function NavFrame(props) {
             <SocialMediaRow />
             <br />
             <Watermark />
+            <br />
           </div>
         </div>
       </Drawer>
