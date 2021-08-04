@@ -22,7 +22,6 @@ const PSLink = (props) => {
         className={classes.root}
         color="active"
         href={props.url}
-        onClick={props.onClick}
         target={props.newTab ? "_blank" : ""}
         rel="noreferrer"
       >

@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head"
 import NavFrame from "../components/organisms/NavFrame/NavFrame"
 import { Box, Grid, Typography } from "@material-ui/core"
 import React from "react"
 import PSCard from "../components/molecules/PSCard/PSCard"
 import PSLink from "../components/atoms/PSLink/PSLink"
-import { CHART_BASE_URL } from "../core/environments"
+import { BASE_URl, CHART_URL, LANDING_URL } from "../core/environments"
 import { Assessment, Language, Videocam, AttachMoney } from "@material-ui/icons"
 
 export default function Home() {
@@ -18,15 +19,32 @@ export default function Home() {
         <Grid container spacing={3}>
           <Grid container item xs={12}>
             <PSCard
-              title={"Welcome to the PseudoCoin Network"}
+              title={
+                <div>
+                  Welcome to the <strong>PseudoCoin App Alpha!</strong>
+                </div>
+              }
               content={
                 <>
                   <Typography paragraph>
-                    The PseudoCoin Network exists to offer the absolute best
-                    resource for crypto investors. A community driven platform
-                    that responds and evolves with the ever changing needs of
-                    investors in the crypto space by providing tools to inform
-                    and empower the people.{" "}
+                    Take a look around and let us know what you think. We'll be
+                    adding features and fixing bugs daily so make sure to check
+                    in :)
+                  </Typography>
+
+                  <Typography
+                    paragraph
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    Learn more about PseudoCoin here:{" "}
+                    <div style={{ marginLeft: "6px" }}>
+                      <PSLink
+                        newTab={true}
+                        text={"pseudocoin.io"}
+                        withIcon={true}
+                        url={LANDING_URL}
+                      />
+                    </div>
                   </Typography>
                 </>
               }
@@ -50,7 +68,7 @@ export default function Home() {
                       newTab={true}
                       text={"view charts"}
                       withIcon={true}
-                      url={CHART_BASE_URL}
+                      url={CHART_URL}
                     />
                   </Typography>
                 </>
@@ -69,10 +87,10 @@ export default function Home() {
                     informational videos about Pseudo Coin and tutorials.
                     <br />
                     <PSLink
-                      newTab={true}
+                      newTab={false}
                       text={"browse videos"}
                       withIcon={true}
-                      url={CHART_BASE_URL}
+                      url={`${BASE_URl}/videos`} // todo: cleanup
                     />
                   </Typography>
                 </>
