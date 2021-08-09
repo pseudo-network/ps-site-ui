@@ -31,6 +31,8 @@ import { alpha, makeStyles } from "@material-ui/core/styles"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import ThemeToggle from "../../molecules/ThemeToggle/ThemeToggle"
+import { PSEUDOCOIN_ADDRESS } from "../../../core/environments"
+import Image from "next/image"
 
 const drawerWidth = 300
 
@@ -115,13 +117,13 @@ export default function NavFrame(props) {
   ]
 
   const links = [
-    // ListItemObject(
-    //   "Whitepaper",
-    //   <ReceiptOutlined />,
-    //   "https://pseudocoin.io/Real_PseudoCoin_Whitepaper.pptx.pdf",
-    //   false,
-    //   true
-    // ),
+    ListItemObject(
+      "Buy PseudoCoin",
+      <Image src={"/imgs/ps-logo.png"} width={30} height={30} />,
+      `https://pancakeswap.finance/swap?outputCurrency=${PSEUDOCOIN_ADDRESS}`,
+      false,
+      true
+    ),
     // ListItemObject(
     //   "Linktree",
     //   <AccountTree />,
@@ -212,7 +214,7 @@ export default function NavFrame(props) {
               )
             })}
           </List>
-          {/* <List>
+          <List>
             <h4 className={classes.listHeader}>Links</h4>
             {links.map((item, key) => {
               // console.log("NavListItem" + key);
@@ -225,7 +227,7 @@ export default function NavFrame(props) {
                 </div>
               )
             })}
-          </List> */}
+          </List>
           <div className={classes.socialMediaRowParent}>
             {" "}
             <ThemeToggle />
