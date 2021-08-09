@@ -112,20 +112,20 @@ export default function NavFrame(props) {
   ]
 
   const links = [
-    ListItemObject(
-      "Whitepaper",
-      <ReceiptOutlined />,
-      "https://pseudocoin.io/Real_PseudoCoin_Whitepaper.pptx.pdf",
-      false,
-      true
-    ),
-    ListItemObject(
-      "Linktree",
-      <AccountTree />,
-      "https://linktr.ee/PseudoCoin",
-      false,
-      true
-    ),
+    // ListItemObject(
+    //   "Whitepaper",
+    //   <ReceiptOutlined />,
+    //   "https://pseudocoin.io/Real_PseudoCoin_Whitepaper.pptx.pdf",
+    //   false,
+    //   true
+    // ),
+    // ListItemObject(
+    //   "Linktree",
+    //   <AccountTree />,
+    //   "https://linktr.ee/PseudoCoin",
+    //   false,
+    //   true
+    // ),
     // ListItemObject("Roadmap", <Map />, "/roadmap", true),
   ]
 
@@ -209,7 +209,7 @@ export default function NavFrame(props) {
               )
             })}
           </List>
-          <List>
+          {/* <List>
             <h4 className={classes.listHeader}>Links</h4>
             {links.map((item, key) => {
               // console.log("NavListItem" + key);
@@ -222,7 +222,7 @@ export default function NavFrame(props) {
                 </div>
               )
             })}
-          </List>
+          </List> */}
           <div className={classes.socialMediaRowParent}>
             {" "}
             <ThemeToggle />
