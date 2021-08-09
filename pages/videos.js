@@ -31,7 +31,7 @@ export default function Home() {
           <Grid container item xs={12} sm={6} md={3} spacing={1}>
             <PSVideoCard
               title={"What is PseudoCoin?"}
-              url={"https://www.youtube.com/embed/8gCD_ltwCsw"}
+              url={"https://www.youtube.com/embed/IN0TWRCZbgc"}
             />
           </Grid>
         </Grid>
@@ -46,16 +46,16 @@ export default function Home() {
           <Grid container item xs={12} sm={6} md={3} spacing={1}>
             <PSVideoCard
               title={"Trust Wallet: Introduction To Trust Wallet"}
-              url={"https://www.youtube.com/embed/aqtOIKNlLIc"}
+              url={"https://www.youtube.com/embed/9opEiMKL0GU"}
             />
           </Grid>
           <Grid container item xs={12} sm={6} md={3} spacing={1}>
             <PSVideoCard
-              title={"Trust Wallet: How to Install, Create/Import Wallet"}
-              url={"https://www.youtube.com/embed/aCe9N8Amkvs"}
+              title={"Alt Coin Trading: How to Spot a Scam Token"}
+              url={"https://www.youtube.com/embed/9opEiMKL0GU"}
             />
           </Grid>
-          <Grid container item xs={12} sm={6} md={3} spacing={1}>
+          {/* <Grid container item xs={12} sm={6} md={3} spacing={1}>
             <PSVideoCard
               title={"How to Set up MetaMask Wallet"}
               url={"https://www.youtube.com/embed/hAqpb7aNSt0"}
@@ -66,7 +66,7 @@ export default function Home() {
               title={"Alt Coin Trading: How to Spot a Scam Token"}
               url={"https://www.youtube.com/embed/vNOfWhTPG_Q"}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </NavFrame>
     </>
