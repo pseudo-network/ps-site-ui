@@ -63,15 +63,16 @@ export default function Home() {
                   <Typography paragraph>
                     Search any BSC token that has liquidity on PancakeSwap with
                     our free Chart tool.
-                    <br />
-                    <PSLink
-                      newTab={true}
-                      text={"view charts"}
-                      withIcon={true}
-                      url={CHART_URL}
-                    />
                   </Typography>
                 </>
+              }
+              footerContent={
+                <PSLink
+                  newTab={true}
+                  text={"view charts"}
+                  withIcon={true}
+                  url={CHART_URL}
+                />
               }
             />
           </Grid>
@@ -85,29 +86,39 @@ export default function Home() {
                   <Typography paragraph>
                     Search through our collection of videos ranging from
                     informational videos about Pseudo Coin and tutorials.
-                    <br />
-                    <PSLink
-                      newTab={false}
-                      text={"browse videos"}
-                      withIcon={true}
-                      url={`${BASE_URl}/videos`} // todo: cleanup
-                    />
                   </Typography>
                 </>
+              }
+              footerContent={
+                <PSLink
+                  newTab={false}
+                  text={"browse videos"}
+                  withIcon={true}
+                  url={`${BASE_URl}/videos`} // todo: cleanup
+                />
               }
             />
           </Grid>
 
           <Grid container item xs={4}>
             <PSCard
-              title={"Premium"}
+              title={"PseudoCoin"}
               avatar={<AttachMoney />}
               content={
                 <>
                   <Typography paragraph>
-                    Premium features coming soon!
+                    PseudoCoin holders have access to premium features (coming
+                    soon).
                   </Typography>
                 </>
+              }
+              footerContent={
+                <PSLink
+                  newTab={true}
+                  text={"buy PseudoCoin"}
+                  withIcon={true}
+                  url={`https://pancakeswap.finance/swap`}
+                />
               }
             />
           </Grid>

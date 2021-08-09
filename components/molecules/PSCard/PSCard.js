@@ -5,6 +5,7 @@ import Card from "@material-ui/core/Card"
 import CardHeader from "@material-ui/core/CardHeader"
 import CardMedia from "@material-ui/core/CardMedia"
 import CardContent from "@material-ui/core/CardContent"
+import { CardActions } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,6 +57,8 @@ export default function PSCard(props) {
         <CardMedia className={classes.media} image={props.imgURL} />
       )}
       {props.content && <CardContent>{props.content}</CardContent>}
+
+      {props.footerContent && <CardActions>{props.footerContent}</CardActions>}
     </Card>
   )
 }

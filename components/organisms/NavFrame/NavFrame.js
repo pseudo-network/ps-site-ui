@@ -25,6 +25,7 @@ import {
   BarChart,
   ReceiptOutlined,
   AccountTree,
+  Create,
 } from "@material-ui/icons"
 import { alpha, makeStyles } from "@material-ui/core/styles"
 import Link from "next/link"
@@ -109,6 +110,8 @@ export default function NavFrame(props) {
       false,
       true
     ),
+    ListItemObject("Swap", <SwapHoriz />, "/", true),
+    ListItemObject("Token Builder", <Create />, "/", true),
   ]
 
   const links = [
