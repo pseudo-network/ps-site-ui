@@ -2,7 +2,7 @@ import React, { useContext, createContext, useState, useEffect } from "react"
 import useSWR from "swr"
 import { fetcher } from "../utils/utils"
 import {
-  API_BASE_URL,
+  CHARTDATA_BASE_URL,
   USDC,
   USDC_ADDRESS,
   WBNB_ADDRESS,
@@ -28,7 +28,7 @@ function formatTVSymbol(name, symbol, address, quoteCurrency) {
 
 function getCryptoByAddress(address, usdc) {
   return axios
-    .get(`${API_BASE_URL}/cryptos?search_query=${address}`)
+    .get(`${CHARTDATA_BASE_URL}/cryptos?search_query=${address}`)
     .then((res) => {
       if (res.data.length > 0) {
         return res.data[0]
@@ -47,7 +47,7 @@ function getCryptoInfoByAddress(address, usdc) {
   let quoteCurrency = usdc ? USDC_ADDRESS : WBNB_ADDRESS
   return axios
     .get(
-      `${API_BASE_URL}/cryptos/${address}/info?quote_currency=${quoteCurrency}`
+      `${CHARTDATA_BASE_URL}/cryptos/${address}/info?quote_currency=${quoteCurrency}`
     )
     .then((res) => {
       if (res.data) {
