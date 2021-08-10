@@ -5,7 +5,7 @@ import { Box, Grid, Typography } from "@material-ui/core"
 import React from "react"
 import PSCard from "../components/molecules/PSCard/PSCard"
 import PSLink from "../components/atoms/PSLink/PSLink"
-import { BASE_URl, CHART_URL, LANDING_URL } from "../core/environments"
+import { WEB_APP_URL, CHART_URL, LANDING_URL } from "../core/environments"
 import { Assessment, Language, Videocam, AttachMoney } from "@material-ui/icons"
 
 export default function Home() {
@@ -94,7 +94,7 @@ export default function Home() {
                   newTab={false}
                   text={"browse videos"}
                   withIcon={true}
-                  url={`${BASE_URl}/videos`} // todo: cleanup
+                  url={`${WEB_APP_URL}/videos`} // todo: cleanup
                 />
               }
             />
