@@ -46,7 +46,7 @@ export default function Home() {
           <Grid container item xs={12} sm={6} md={3} spacing={1}>
             <PSVideoCard
               title={"Trust Wallet: Introduction To Trust Wallet"}
-              url={"https://www.youtube.com/embed/9opEiMKL0GU"}
+              url={"https://www.youtube.com/embed/Mi3eeYfeNS0"}
             />
           </Grid>
           <Grid container item xs={12} sm={6} md={3} spacing={1}>
