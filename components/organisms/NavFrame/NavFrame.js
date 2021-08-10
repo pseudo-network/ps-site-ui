@@ -108,7 +108,7 @@ export default function NavFrame(props) {
     ListItemObject(
       "Charts",
       <Assessment />,
-      "https://charts.pseudocoin.io/0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3",
+      `https://charts.pseudocoin.io/${PSEUDOCOIN_ADDRESS}`,
       false,
       true
     ),
