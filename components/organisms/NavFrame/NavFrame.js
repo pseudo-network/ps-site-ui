@@ -113,7 +113,7 @@ export default function NavFrame(props) {
       true
     ),
     ListItemObject("Swap", <SwapHoriz />, "/", true),
-    ListItemObject("Token Builder", <Create />, "/", true),
+    ListItemObject("Token Builder", <Create />, "/token-builder"),
   ]
 
   const links = [
