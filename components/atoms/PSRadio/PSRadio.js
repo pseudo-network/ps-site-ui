@@ -38,6 +38,7 @@ const PSRadio = (props) => {
       disabled={props.disabled}
       classes={{root: classes.radio, checked: classes.checked}}
       onChange={props.onChange}
+      defaultValue={props.defaultValue}
       />   
     </>
   )

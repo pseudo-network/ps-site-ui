@@ -42,9 +42,9 @@ const Template = {
 
 export default function Home() {
 
-  const [network, setNetwork] = useState("");
-  const [template, setTemplate] = useState("");
-  const [tokenDecimal, setTokenDecimal] = useState("");
+  const [network, setNetwork] = useState("Binance Smart Chain");
+  const [template, setTemplate] = useState("Simple Token");
+  const [tokenDecimal, setTokenDecimal] = useState(9);
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
   const [tokenAmount, setTokenAmount] = useState("");
@@ -55,7 +55,7 @@ export default function Home() {
   const [txtDisabled, setTxtDisabled] = useState(false);
   const [open, setOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [preview, setPreview] = useState(true);
+  const [preview, setPreview] = useState(false);
   const [previewTokenCode, setPreviewTokenCode] = useState("");
 
   const handlePreview = (text) => {
@@ -104,28 +104,13 @@ export default function Home() {
 
     if ((Number(tokenLiquidity) + Number(tokenTax)) >= 100) return "Error, the token liquidity percentage fee plus the token liquidity percentage fee cannot exceed 100."
 
-    // why does this work, and why doesnt this work (Number(tokenDecimal) !== 9 || Number(tokenDecimal) !== 18) it makes no sense
-    if (!(Number(tokenDecimal) === 9 || Number(tokenDecimal) === 18)) return "Error, the token decimal amount needs to be 9 or 18."
+    if (tokenDecimal != 9 && tokenDecimal != 18) return "Error, the token decimal amount needs to be 9 or 18."
 
     return null
   }
 
-  const clear = () => {
-    // clear each field
-    setNetwork("");
-    setTemplate("");
-    setTokenName("");
-    setTokenSymbol("");
-    setTokenAmount("");
-    setTokenDecimal("")
-    setTokenMaxTxAmount(""); 
-    setTokenSell(""); 
-    setTokenTax(""); 
-    setTokenLiquidity("");
-    setPreview(true);
-  }
-
-  const clearTokenomics = () => {
+  function clearFields()
+  {
     setTokenName("");
     setTokenSymbol("");
     setTokenAmount("");
@@ -154,7 +139,7 @@ export default function Home() {
                                     <FormControl className={classes.padding} component="fieldset">
                                         <FormLabel focused={false} className={classes.header} component="legend"><h4>Network</h4></FormLabel>
                                             <RadioGroup aria-label="network" name="network1" value={network} onChange = {(event) => {setNetwork(event.target.value)}}>
-                                                <FormControlLabel value="Binance Smart Chain" control={<PSRadio />} label="Binance Smart Chain" />
+                                                <FormControlLabel value="Binance Smart Chain" control={<PSRadio defaultValue={true} />} label="Binance Smart Chain" />
                                                 <FormControlLabel value="Ethereum Smart Chain" disabled control={<PSRadio />} label="Ethereum Smart Chain" />
                                                 <FormControlLabel value="Cardano Smart Chain" disabled control={<PSRadio />} label="Cardano Smart Chain" />
                                             </RadioGroup>
@@ -165,9 +150,9 @@ export default function Home() {
                                         <FormLabel focused={false} className={classes.header} component="legend"><h4>Template</h4></FormLabel>
                                             <RadioGroup aria-label="template" name="template1" value={template} onChange = {(event) => {setTemplate(event.target.value)}}>
                                                 <FormControlLabel value= "Custom Safemoon Clone" control={<PSRadio />} label= "Custom Safemoon Clone" onChange = {(event) => {setTxtDisabled(!event.target.value)}} />
-                                                <FormControlLabel value= "Simple Token"  control={<PSRadio />} label= "Simple Token" onChange = {(event) => {
-                                                    setTxtDisabled(event.target.value); 
-                                                    clearTokenomics()
+                                                <FormControlLabel value= "Simple Token"  control={<PSRadio defaultValue={true} />} label= "Simple Token" onChange = {(event) => {
+                                                    console.log("running on change code")
+                                                    setTxtDisabled(event.target.value);
                                                 }} />
                                                 <FormControlLabel value="Custom Token Coming Soon" disabled control={<PSRadio />} label="Custom Token Coming Soon" />
                                             </RadioGroup>
@@ -216,7 +201,7 @@ export default function Home() {
                                         required
                                         value = {tokenDecimal}
                                         type="number"
-                                        onChange = {(event) => setTokenDecimal(event.target.value)
+                                        onChange = {(event) => setTokenDecimal(Number(event.target.value))
                                         }
                                     />
 
@@ -271,13 +256,13 @@ export default function Home() {
 
                                 <Grid container item xs={12}>
                                     {preview ?
-                                        <></>
-                                            :
                                             <TextareaAutosize
                                                 maxRows= "15"
                                                 style={{ width: "100%" }}
                                                 defaultValue= {previewTokenCode}
                                             />
+                                                : 
+                                                <></>
                                     }        
                                 </Grid>  
 
@@ -287,12 +272,11 @@ export default function Home() {
                                         </Alert>
                                     </Snackbar>
 
-                                <Grid container item xs={12}  direction="row" justify="flex-end" alignItems="flex-end" style={{paddingRight: "2em"}}> 
+                                <Grid container item xs={12}  direction="row" justifyContent="flex-end" alignItems="flex-end" style={{paddingRight: "2em"}}> 
 
                                     <PSButton className={classes.button} text={"Reset"} onClick={() => { 
-
-                                        clear();
-
+                                            clearFields()
+                                            setPreview(false)
                                         }}>
                                     </PSButton>
 
@@ -307,26 +291,16 @@ export default function Home() {
 
                                             handlePreview(tokenName)
                                             // handlePreview(previewToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell))
-                                            setPreview(false);
+                                            setPreview(true);
 
-                                            console.log(previewToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell))
+                                            console.log(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell)
 
                                             // closes the preview if you reclick button
                                             // if(preview === false) setPreview(true);
 
                                             }}>
                                         </PSButton>
-                                    </div>  
-
-                                    
-                                    <div style={{ marginLeft: "6px" }}>
-                                        <PSButton className={classes.button} text={"Close Preview"} onClick={(event) => { 
-                                            
-                                            setPreview(!preview);
-
-                                            }}>
-                                        </PSButton>
-                                    </div>    
+                                    </div> 
 
                                     <div style={{ marginLeft: "6px" }}>
                                         <PSButton className={classes.button} text={"Download"} onClick={() => { 
