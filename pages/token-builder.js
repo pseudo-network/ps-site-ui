@@ -214,7 +214,7 @@ export default function Home() {
                                         id = "Tax Percentage Fee"
                                         label = "Tax Percentage Fee" 
                                         variant = "outlined" 
-                                        required
+                                        required={!txtDisabled}
                                         disabled={txtDisabled}
                                         value = {tokenTax}
                                         type="number"
@@ -226,7 +226,7 @@ export default function Home() {
                                         id = "Liquidity Percentage Fee"
                                         label = "Liquidity Percentage Fee" 
                                         variant = "outlined" 
-                                        required
+                                        required={!txtDisabled}
                                         disabled={txtDisabled}
                                         value = {tokenLiquidity}
                                         type="number"
@@ -238,7 +238,7 @@ export default function Home() {
                                         id = "tokenMaxTxAmount"
                                         label = "Max Transaction Amount" 
                                         variant = "outlined" 
-                                        required
+                                        required={!txtDisabled}
                                         type="number"
                                         disabled={txtDisabled}
                                         value = {tokenMaxTxAmount}
@@ -251,7 +251,7 @@ export default function Home() {
                                         id = "numTokensSellToAddToLiquidity"
                                         label = "Tokens to Add to Liquidity" 
                                         variant = "outlined" 
-                                        required
+                                        required={!txtDisabled}
                                         type="number"
                                         disabled={txtDisabled}
                                         value = {tokenSell}
