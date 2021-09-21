@@ -1,4 +1,4 @@
-import { generateToken, previewToken } from '../components/token_generator/tokenGenerator';
+import { generateToken } from '../components/token_generator/tokenGenerator';
 import { useState } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -75,8 +75,6 @@ export default function Home() {
     setOpen(false);
   };
 
-  // const [isSimpleToken, setIsSimpleToken] = useState(false)
-
   const validate = () => {
     if (template.length === 0) return "Must select a network."
     
@@ -129,7 +127,7 @@ export default function Home() {
                 <PSCard
                     title= {
                     <div>
-                        <strong>PseudoCoin Token Builder Alpha</strong>
+                        <strong>PseudoCoin Token Builder Alpha V0.0.1</strong>
                     </div>
                     }
                     content= {
@@ -139,7 +137,7 @@ export default function Home() {
                                     <FormControl className={classes.padding} component="fieldset">
                                         <FormLabel focused={false} className={classes.header} component="legend"><h4>Network</h4></FormLabel>
                                             <RadioGroup aria-label="network" name="network1" value={network} onChange = {(event) => {setNetwork(event.target.value)}}>
-                                                <FormControlLabel value="Binance Smart Chain" control={<PSRadio defaultValue={true} />} label="Binance Smart Chain" />
+                                                <FormControlLabel value="Binance Smart Chain" control={<PSRadio checked={network === "Binance Smart Chain"} />} label="Binance Smart Chain" />
                                                 <FormControlLabel value="Ethereum Smart Chain" disabled control={<PSRadio />} label="Ethereum Smart Chain" />
                                                 <FormControlLabel value="Cardano Smart Chain" disabled control={<PSRadio />} label="Cardano Smart Chain" />
                                             </RadioGroup>
@@ -150,7 +148,7 @@ export default function Home() {
                                         <FormLabel focused={false} className={classes.header} component="legend"><h4>Template</h4></FormLabel>
                                             <RadioGroup aria-label="template" name="template1" value={template} onChange = {(event) => {setTemplate(event.target.value)}}>
                                                 <FormControlLabel value= "Custom Safemoon Clone" control={<PSRadio />} label= "Custom Safemoon Clone" onChange = {(event) => {setTxtDisabled(!event.target.value)}} />
-                                                <FormControlLabel value= "Simple Token"  control={<PSRadio defaultValue={true} />} label= "Simple Token" onChange = {(event) => {
+                                                <FormControlLabel value= "Simple Token"  control={<PSRadio checked={template === "Simple Token"} />} label= "Simple Token" onChange = {(event) => {
                                                     console.log("running on change code")
                                                     setTxtDisabled(event.target.value);
                                                 }} />
@@ -260,6 +258,7 @@ export default function Home() {
                                                 maxRows= "15"
                                                 style={{ width: "100%" }}
                                                 defaultValue= {previewTokenCode}
+                                                value= {previewTokenCode}
                                             />
                                                 : 
                                                 <></>
@@ -272,15 +271,23 @@ export default function Home() {
                                         </Alert>
                                     </Snackbar>
 
-                                <Grid container item xs={12}  direction="row" justifyContent="flex-end" alignItems="flex-end" style={{paddingRight: "2em"}}> 
+                                <Grid 
+                                    container xs={12}  
+                                    direction="row" 
+                                    justifyContent="flex-end"
+                                    alignItems="flex-end" 
+                                    spacing={1}
+                                > 
 
-                                    <PSButton className={classes.button} text={"Reset"} onClick={() => { 
-                                            clearFields()
-                                            setPreview(false)
-                                        }}>
-                                    </PSButton>
+                                    <Grid item>
+                                        <PSButton className={classes.button} text={"Reset"} onClick={() => { 
+                                                clearFields()
+                                                setPreview(false)
+                                            }}>
+                                        </PSButton>
+                                    </Grid>
 
-                                    <div style={{ marginLeft: "6px" }}>
+                                    <Grid item>
                                         <PSButton className={classes.button} text={"Preview"} onClick={(event) => { 
 
                                             const err = validate()
@@ -289,32 +296,27 @@ export default function Home() {
                                                 return
                                             }
 
-                                            handlePreview(tokenName)
-                                            // handlePreview(previewToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell))
+                                            let func = "preview";
+                                            handlePreview(generateToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell, func))
                                             setPreview(true);
-
-                                            console.log(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell)
-
-                                            // closes the preview if you reclick button
-                                            // if(preview === false) setPreview(true);
-
                                             }}>
                                         </PSButton>
-                                    </div> 
+                                    </Grid> 
 
-                                    <div style={{ marginLeft: "6px" }}>
+                                    <Grid item>
                                         <PSButton className={classes.button} text={"Download"} onClick={() => { 
                                             const err = validate()
                                             if (err) {
                                                 handleClick(err); 
                                                 return
                                             }
-
-                                            generateToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell);
+                                            
+                                            let func = "download";
+                                            generateToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell, func);
 
                                             }}>
                                         </PSButton>
-                                    </div>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </>

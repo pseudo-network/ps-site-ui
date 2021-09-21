@@ -11,7 +11,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Sep 19 22:14:16 2021
+# Make data base, printed on Tue Sep 21 14:10:08 2021
 
 # Variables
 
@@ -26,7 +26,7 @@ USERPROFILE = C:\Users\Anthony
 # environment
 LOCALAPPDATA = C:\Users\Anthony\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-d4ebda8b-625a-4b65-b338-932c8cdcb33a-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-516ccf4e-7b8e-4b32-b840-d1ff1392100b-sock
 # environment
 VSCODE_CWD = C:\Users\Anthony\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -44,7 +44,7 @@ GOPATH = C:\Users\Anthony\go
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_24992_EAFQOGGNZQCXVPMR
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_30072_IEBGPQSDPYOVMYMB
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -102,7 +102,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 24992
+VSCODE_PID = 30072
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -218,8 +218,7 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # default
-.FEATURES := target-specific order-only seco 
-nd-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 0802
 # makefile (from 'Makefile', line 4)
@@ -235,7 +234,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 8 Stepping 2, AuthenticAMD
 
 # Directories
 
-# . (key c:/Users/Anthony/Documents/githubprojects/ps-site-ui, mtime 1631856188): 31 files, no impossibilities.
+# . (key c:/Users/Anthony/Documents/githubprojects/ps-site-ui, mtime 1632106422): 31 files, no impossibilities.
 
 # 31 files, no impossibilities in 1 directories.
 
@@ -256,7 +255,8 @@ bumpversion-patch:
 Makefile:
 #  Implicit rule search has been done.
 #  Last modified 2021-09-17 00:06:17
-#  File has been updated.
+#  File has b 
+een updated.
 #  Successfully updated.
 
 bumpversion-major:
@@ -332,8 +332,7 @@ docker-build:
 
 docker-run:
 #  Implicit rule search has not been done.
-#  Modif 
-ication time never checked.
+#  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 33):
 	@docker run -itp $(port):$(port)  $(gcr-image)
@@ -359,6 +358,6 @@ bumpversion-minor:
 # strcache performance: lookups = 60 / hit rate = 25%
 # hash-table stats:
 # Load=45/8192=1%, Rehash=0, Collisions=0/60=0%
-# Finished Make data base on Sun Sep 19 22:14:16 2021
+# Finished Make data base on Tue Sep 21 14:10:08 2021
 
  

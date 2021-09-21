@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "#836AFF !important",
         color: "#A694FE",
     },
-
     root: {   
         color: "#ACB0BB",
 
@@ -19,10 +18,20 @@ const useStyles = makeStyles((theme) => ({
         },
 
         '& .MuiInputBase-root': {
-            color: 'primary',
+            color: 'primary', 
         },
-        
         padding: ".66em",
+        '& input[type=number]': {
+          '-moz-appearance': 'textfield'
+      },
+      '& input[type=number]::-webkit-outer-spin-button': {
+          '-webkit-appearance': 'none',
+          margin: 0
+      },
+      '& input[type=number]::-webkit-inner-spin-button': {
+          '-webkit-appearance': 'none',
+          margin: 0
+      },
     },
 }))
 
