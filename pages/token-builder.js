@@ -11,9 +11,11 @@ import PSButton from "../components/atoms/PSButton/PSButton"
 import PSTextField from "../components/atoms/PSTextField/PSTextField"
 import PSRadio from "../components/atoms/PSRadio/PSRadio"
 import PSCard from "../components/molecules/PSCard/PSCard"
+import PSSelect from "../components/atoms/PSSelect/PSSelect"
 import { makeStyles } from "@material-ui/core/styles"
-import { Grid, Typography } from "@material-ui/core"
+import { Grid, Typography, MenuItem} from "@material-ui/core"
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
 
 const useStyles = makeStyles((theme) => ({
     header:{
@@ -43,8 +45,8 @@ const Template = {
 export default function Home() {
 
   const [network, setNetwork] = useState("Binance Smart Chain");
-  const [template, setTemplate] = useState("Simple Token");
-  const [tokenDecimal, setTokenDecimal] = useState(9);
+  const [template, setTemplate] = useState("Custom Safemoon Clone");
+  const [tokenDecimal, setTokenDecimal] = useState();
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
   const [tokenAmount, setTokenAmount] = useState("");
@@ -147,8 +149,8 @@ export default function Home() {
                                     <FormControl className={classes.padding} component="fieldset">
                                         <FormLabel focused={false} className={classes.header} component="legend"><h4>Template</h4></FormLabel>
                                             <RadioGroup aria-label="template" name="template1" value={template} onChange = {(event) => {setTemplate(event.target.value)}}>
-                                                <FormControlLabel value= "Custom Safemoon Clone" control={<PSRadio />} label= "Custom Safemoon Clone" onChange = {(event) => {setTxtDisabled(!event.target.value)}} />
-                                                <FormControlLabel value= "Simple Token"  control={<PSRadio checked={template === "Simple Token"} />} label= "Simple Token" onChange = {(event) => {
+                                                <FormControlLabel value= "Custom Safemoon Clone" control={<PSRadio checked={template === "Custom Safemoon Clone"}/>} label= "Custom Safemoon Clone" onChange = {(event) => {setTxtDisabled(!event.target.value)}} />
+                                                <FormControlLabel value= "Simple Token"  control={<PSRadio />} label= "Simple Token" onChange = {(event) => {
                                                     console.log("running on change code")
                                                     setTxtDisabled(event.target.value);
                                                 }} />
@@ -192,16 +194,21 @@ export default function Home() {
                                         }
                                     />
 
-                                    <PSTextField 
+                                    
+                                    <PSSelect
+                                    // this needs fixing at somepoint, its getting the menu items from PSSelect.js, when it should be getting them
+                                    // from here
                                         id = "Token Decimals"
                                         label = "Token Decimals" 
-                                        variant = "outlined" 
+                                        variant = "outlined"
+                                        select 
                                         required
                                         value = {tokenDecimal}
                                         type="number"
-                                        onChange = {(event) => setTokenDecimal(Number(event.target.value))
+                                        onChange = {(event) => setTokenDecimal(event.target.value)
                                         }
-                                    />
+                                    > 
+                                    </PSSelect> 
 
                                     <PSTextField 
                                         id = "Tax Percentage Fee"
