@@ -1,4 +1,4 @@
-import { generateToken } from '../components/token_generator/tokenGenerator';
+import { generateToken } from '../components/molecules/token_generator/tokenGenerator';
 import { useState } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -15,7 +15,8 @@ import PSSelect from "../components/atoms/PSSelect/PSSelect"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid, Typography, MenuItem} from "@material-ui/core"
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-
+import { payRequest } from '../components/molecules/token_generator/payRequest';
+ 
 
 const useStyles = makeStyles((theme) => ({
     header:{
@@ -30,11 +31,6 @@ const useStyles = makeStyles((theme) => ({
     padding: {
         paddingLeft: ".86em",
     },
-    button:{
-        // paddingRight: ".86em"
-    },
-
-
 }))
 
 const Template = {
@@ -46,7 +42,7 @@ export default function Home() {
 
   const [network, setNetwork] = useState("Binance Smart Chain");
   const [template, setTemplate] = useState("Custom Safemoon Clone");
-  const [tokenDecimal, setTokenDecimal] = useState();
+  const [tokenDecimal, setTokenDecimal] = useState(9);
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
   const [tokenAmount, setTokenAmount] = useState("");
@@ -55,7 +51,8 @@ export default function Home() {
   const [tokenTax, setTokenTax] = useState();
   const [tokenLiquidity, setTokenLiquidity] = useState();
   const [txtDisabled, setTxtDisabled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [openErrorAlert, setOpenErrorAlert] = useState(false);
+  const [openSuccessAlert, setOpenSuccessAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [preview, setPreview] = useState(false);
   const [previewTokenCode, setPreviewTokenCode] = useState("");
@@ -64,17 +61,36 @@ export default function Home() {
     setPreviewTokenCode(text);
   };
 
-  const handleClick = (err) => {
+  const handleError = (err) => {
     setErrorMessage(err);
-    setOpen(true);
+    setOpenErrorAlert(true);
   };
 
-  const handleClose = (event, reason) => {
+  const handleSuccess = () => {
+    setOpenSuccessAlert(true);
+  }
+
+  const handlePayment = async() => {
+    // payRequest(amount of BNB, address its sent to)
+    await payRequest(".000001", "0x28490Fcd3C871064254B23829A99CA0a8251BA9d").then(function(result) {
+        if ( result != "Success!"){
+            handleError(result);
+            return
+        }
+        else{
+            let func = "download";
+            generateToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell, func);
+            handleSuccess();
+        }
+    });
+  };
+
+  const handleErrorClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-    
-    setOpen(false);
+    setOpenErrorAlert(false);
+    setOpenSuccessAlert(false);
   };
 
   const validate = () => {
@@ -272,11 +288,17 @@ export default function Home() {
                                     }        
                                 </Grid>  
 
-                                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                                        <Alert onClose={handleClose} severity="error" variant="filled" sx={{ width: '100%' }}>
-                                        {String(errorMessage)}
-                                        </Alert>
-                                    </Snackbar>
+                                <Snackbar open={openErrorAlert} autoHideDuration={6000} onClose={handleErrorClose}>
+                                    <Alert onClose={handleErrorClose} severity="error" variant="filled" sx={{ width: '100%' }}>
+                                    {String(errorMessage)}
+                                    </Alert>
+                                </Snackbar>
+
+                                <Snackbar open={openSuccessAlert} autoHideDuration={6000} onClose={handleErrorClose}>
+                                    <Alert onClose={handleErrorClose} severity="success" variant="filled" sx={{ width: '100%' }}>
+                                    Success!
+                                    </Alert>
+                                </Snackbar>
 
                                 <Grid 
                                     container xs={12}  
@@ -295,14 +317,19 @@ export default function Home() {
                                     </Grid>
 
                                     <Grid item>
-                                        <PSButton className={classes.button} text={"Preview"} onClick={(event) => { 
+                                        <PSButton className={classes.button} text={"Payment TEST"} onClick={() => {                                      
+                                        handlePayment();
+                                            }}>
+                                        </PSButton>
+                                    </Grid>
 
+                                    <Grid item>
+                                        <PSButton className={classes.button} text={"Preview"} onClick={(event) => { 
                                             const err = validate()
                                             if (err) {
-                                                handleClick(err); 
+                                                handleError(err); 
                                                 return
                                             }
-
                                             let func = "preview";
                                             handlePreview(generateToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell, func))
                                             setPreview(true);
@@ -314,13 +341,10 @@ export default function Home() {
                                         <PSButton className={classes.button} text={"Download"} onClick={() => { 
                                             const err = validate()
                                             if (err) {
-                                                handleClick(err); 
+                                                handleError(err); 
                                                 return
                                             }
-                                            
-                                            let func = "download";
-                                            generateToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell, func);
-
+                                            handlePayment();
                                             }}>
                                         </PSButton>
                                     </Grid>

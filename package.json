@@ -17,6 +17,7 @@
     "axios": "^0.21.1",
     "crypto": "^1.0.1",
     "crypto-js": "^3.1.9-1",
+    "ethers": "^5.4.7",
     "file-saver": "^2.0.5",
     "http": "^0.0.1-security",
     "mathjs": "^9.4.3",
