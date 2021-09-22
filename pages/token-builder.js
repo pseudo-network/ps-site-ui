@@ -53,7 +53,7 @@ export default function Home() {
   const [txtDisabled, setTxtDisabled] = useState(false);
   const [openErrorAlert, setOpenErrorAlert] = useState(false);
   const [openSuccessAlert, setOpenSuccessAlert] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [preview, setPreview] = useState(false);
   const [previewTokenCode, setPreviewTokenCode] = useState("");
 
@@ -62,12 +62,12 @@ export default function Home() {
   };
 
   const handleError = (err) => {
-    setErrorMessage(err);
+    setAlertMessage(err);
     setOpenErrorAlert(true);
   };
 
   const handleSuccess = (result) => {
-    setErrorMessage(result);    
+    setAlertMessage(result);    
     setOpenSuccessAlert(true);
   }
 
@@ -291,13 +291,13 @@ export default function Home() {
 
                                 <Snackbar open={openErrorAlert} autoHideDuration={6000} onClose={handleErrorClose}>
                                     <Alert onClose={handleErrorClose} severity="error" variant="filled" sx={{ width: '100%' }}>
-                                        {String(errorMessage)}
+                                        {String(alertMessage)}
                                     </Alert>
                                 </Snackbar>
 
                                 <Snackbar open={openSuccessAlert} autoHideDuration={6000} onClose={handleErrorClose}>
                                     <Alert onClose={handleErrorClose} severity="success" variant="filled" sx={{ width: '100%' }}>
-                                        {String(errorMessage)}
+                                        {String(alertMessage)}
                                     </Alert>
                                 </Snackbar>
 
