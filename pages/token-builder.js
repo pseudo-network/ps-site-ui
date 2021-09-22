@@ -66,21 +66,22 @@ export default function Home() {
     setOpenErrorAlert(true);
   };
 
-  const handleSuccess = () => {
+  const handleSuccess = (result) => {
+    setErrorMessage(result);    
     setOpenSuccessAlert(true);
   }
 
   const handlePayment = async() => {
     // payRequest(amount of BNB, address its sent to)
     await payRequest(".000001", "0x28490Fcd3C871064254B23829A99CA0a8251BA9d").then(function(result) {
-        if ( result != "Success!"){
-            handleError(result);
-            return
-        }
-        else{
+        if (result.includes("Success!")){          
             let func = "download";
             generateToken(network, template, tokenName, tokenSymbol, tokenAmount, tokenDecimal, tokenTax, tokenLiquidity, tokenMaxTxAmount, tokenSell, func);
-            handleSuccess();
+            handleSuccess(result);
+        }
+        else{
+            handleError(result);
+            return  
         }
     });
   };
@@ -290,13 +291,13 @@ export default function Home() {
 
                                 <Snackbar open={openErrorAlert} autoHideDuration={6000} onClose={handleErrorClose}>
                                     <Alert onClose={handleErrorClose} severity="error" variant="filled" sx={{ width: '100%' }}>
-                                    {String(errorMessage)}
+                                        {String(errorMessage)}
                                     </Alert>
                                 </Snackbar>
 
                                 <Snackbar open={openSuccessAlert} autoHideDuration={6000} onClose={handleErrorClose}>
                                     <Alert onClose={handleErrorClose} severity="success" variant="filled" sx={{ width: '100%' }}>
-                                    Success!
+                                        {String(errorMessage)}
                                     </Alert>
                                 </Snackbar>
 

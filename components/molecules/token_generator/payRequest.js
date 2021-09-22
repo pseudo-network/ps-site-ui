@@ -17,7 +17,7 @@ import { ethers } from "ethers";
           });
           console.log({ ether, addr });
           console.log("tx", tx);
-          result = "Success!";
+          result = "Success! View transaction at https://bscscan.com/tx/" + tx.hash;
         } catch (err) {
         result = err.message;     
         }
